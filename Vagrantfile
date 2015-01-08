@@ -14,6 +14,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # Use VBoxManage to customize the VM. For example to change memory:
     vb.customize ["modifyvm", :id, "--memory", "1024"]
   end
+
   if Vagrant.has_plugin?("vagrant-cachier")
     config.cache.scope = :box
   end
@@ -24,5 +25,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     salt.run_highstate = true
     salt.install_type = 'stable'
     salt.colorize = true
+  end
+
+  # Run serverspec tests.
+  if Vagrant.has_plugin?("vagrant-serverspec")
+    config.vm.provision :serverspec do |spec|
+      spec.pattern = './spec/*_spec.rb'
+    end
   end
 end
