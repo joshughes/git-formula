@@ -1,7 +1,7 @@
 # for serverspec documentation: http://serverspec.org/
 require_relative 'spec_helper'
 
-pkgs = ['apache2']
+pkgs = ['git']
 
 pkgs.each do |pkg|
   describe package("#{pkg}") do
@@ -9,12 +9,7 @@ pkgs.each do |pkg|
   end
 end
 
-describe service('apache2') do
-  it { should be_enabled }
-  it { should be_running }
-end
-
-describe file('/etc/apache2/apache2.conf') do
+describe file('/root/.gitconfig') do
   it { should be_file }
   it { should be_mode 644 }
   it { should be_owned_by 'root' }

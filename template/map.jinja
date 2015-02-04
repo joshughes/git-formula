@@ -1,7 +1,0 @@
-{% set template = salt['grains.filter_by']({
-    'default': {
-        'pkg': 'apache2',
-        'service': 'apache2',
-        'config': '/etc/apache2/apache2.conf',
-    },
-}, merge=salt['pillar.get']('template:lookup')) %}

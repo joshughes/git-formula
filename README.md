@@ -1,5 +1,5 @@
-template-formula
-================
+git-formula
+===========
 
 A SaltStack formula that is empty. It has dummy content to help with a quick
 start on a new formula.
@@ -7,7 +7,8 @@ start on a new formula.
 Available states
 ================
 
-``template``
-------------
+``git``
+-------
 
-Installs the template package, and starts the associated template service.
+Installs the git package and sets up the root user's .gitconfig file.
+Adds stash.itriagehealth.com to the root user's .ssh/known_hosts file.

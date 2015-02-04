@@ -1,4 +1,4 @@
 base:
 
   '*':
-    - template
+    - git
