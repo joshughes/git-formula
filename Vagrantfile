@@ -15,11 +15,19 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.customize ["modifyvm", :id, "--memory", "1024"]
   end
 
+  # Leverage package cache, if available
   if Vagrant.has_plugin?("vagrant-cachier")
     config.cache.scope = :box
   end
 
-  # Provision VM with this SaltStack formula, in masterless mode.
+  # Clone any desired formula repos, if available
+  if File.exist?('./.vagrant-salt/deps.rb')
+    Dir.chdir('./.vagrant-salt') do
+      system('./deps.rb')
+    end
+  end
+
+  # Provision VM with current formula, in masterless mode
   config.vm.provision :salt do |salt|
     salt.minion_config = "./.vagrant-salt/minion"
     salt.grains_config = "./.vagrant-salt/grains"
@@ -29,7 +37,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     salt.verbose = true
   end
 
-  # Run serverspec tests.
+  # Run serverspec tests
   if Vagrant.has_plugin?("vagrant-serverspec")
     config.vm.provision :serverspec do |spec|
       spec.pattern = './spec/*_spec.rb'
