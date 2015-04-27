@@ -18,6 +18,6 @@ top.sls
 .vagrant-salt/*
 !.vagrant-salt/minion
 !.vagrant-salt/grains
+!.vagrant-salt/pillars
 !.vagrant-salt/top.sls
-!.vagrant-salt/deps.rb
-!.vagrant-salt/deps.yml
+!.vagrant-salt/saltdeps.yml
