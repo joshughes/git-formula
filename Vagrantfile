@@ -24,12 +24,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     deps.checkout_path =  "./.vagrant-salt/deps"
     deps.deps_path     =  "./.vagrant-salt/saltdeps.yml"
   end
-  
+
+  config.vm.provision :file, source: "./.vagrant-salt/minion", destination: "/tmp/minion"
   # Provision VM with current formula, in masterless mode
   config.vm.provision :salt do |salt|
     salt.minion_config = "./.vagrant-salt/minion"
     salt.run_highstate = true
     salt.install_type = 'git v2015.5.3'
+    salt.bootstrap_options = "-P -c /tmp"
     salt.colorize = true
     salt.verbose = true
   end

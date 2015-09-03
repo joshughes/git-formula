@@ -1,2 +1,3 @@
-repositories:
+name: git
+deps:
 #  core: ssh://git@stash.itriagehealth.com/salt/core-formula.git

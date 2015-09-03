@@ -1,8 +1,15 @@
 {%- from 'git/settings.sls' import git with context %}
 
+git-ppa:
+  pkgrepo.managed:
+    - ppa: git-core/ppa
+    - refresh_db: true
+
 git:
   pkg.installed:
     - name: git
+    - require:
+      - pkgrepo: git-ppa
 
 git_config_user_name:
   git.config:
