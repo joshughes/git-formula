@@ -1,5 +1,11 @@
 {%- from 'git/settings.sls' import git with context %}
 
+ /root/global/.git:
+  file.managed:
+    - user: root
+    - group: root
+    - makedirs: True
+
 git-ppa:
   pkgrepo.managed:
     - ppa: git-core/ppa
