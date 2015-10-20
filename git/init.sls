@@ -1,6 +1,6 @@
 {%- from 'git/settings.sls' import git with context %}
 
- /root/global/.git:
+/root/global/.git:
   file.directory:
     - user: root
     - group: root
