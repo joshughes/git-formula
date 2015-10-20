@@ -1,7 +1,7 @@
 {%- from 'git/settings.sls' import git with context %}
 
  /root/global/.git:
-  file.managed:
+  file.directory:
     - user: root
     - group: root
     - makedirs: True
