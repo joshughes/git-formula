@@ -1,5 +1,8 @@
 {%- from 'git/settings.sls' import git with context %}
-
+HOME:
+  environ.setenv:
+    - value: /root
+    
 git-ppa:
   pkgrepo.managed:
     - ppa: git-core/ppa
