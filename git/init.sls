@@ -12,14 +12,14 @@ git:
       - pkgrepo: git-ppa
 
 git_config_user_name:
-  git.config:
+  git.config_set:
     - name: user.name
     - value: 'root'
     - user: root
     - global: True
 
 git_config_user_email:
-  git.config:
+  git.config_set:
     - name: user.email
     - value: 'root@localhost'
     - user: root
