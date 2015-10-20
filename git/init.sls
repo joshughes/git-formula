@@ -18,8 +18,6 @@ git_config_user_name:
     - user: root
     - global: True
 
-FRAUKKAKJDSHFLAKJSH
-
 git_config_user_email:
   git.config:
     - name: user.email
